@@ -51,13 +51,16 @@ Write-Host "`n"
 Write-Host "`n"
 
 ## Connect to the vCenter
-Write-Output "$(Get-Timestamp) Waiting for user credentials." | Out-File $outputLog -Append
 Write-Host "######################################" -ForegroundColor Yellow
 Write-Host "        vCenter Authentication" -ForegroundColor Yellow
 Write-Host "######################################" -ForegroundColor Yellow
 Write-Host "`n"
+Write-Host "Specify the FQDN of your vCenter Server below:" -ForegroundColor Yellow
+Write-Output "$(Get-Timestamp) Waiting for user input - VCSA." | Out-File $outputLog -Append
+$VCServer = Read-Host "Enter your vCenter FQDN"
+Write-Output "$(Get-Timestamp) Waiting for user credentials." | Out-File $outputLog -Append
+Write-Host "`n"
 Write-Host "Please enter your credentials below:" -ForegroundColor Yellow
-$VCServer = "vcenter.mydomain.local"
 $Username = Read-Host "Enter your username"
 $Password = Read-Host "Enter password" -AsSecureString
 Write-Host "`n"
